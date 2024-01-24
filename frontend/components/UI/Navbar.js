@@ -1,15 +1,6 @@
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { StyleSheet, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import {
-  Avatar,
-  Title,
-  Caption,
-  Drawer,
-  Text,
-  TouchableRipple,
-  Switch,
-} from "react-native-paper";
+import { Avatar, Title, Caption, Drawer } from "react-native-paper";
 
 import LogoutIcon from "./LogoutIcon";
 import { Colors, GlobalStyles } from "../../constants/style";

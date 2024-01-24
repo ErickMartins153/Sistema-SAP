@@ -1,11 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "../constants/style";
+import { useLayoutEffect } from "react";
 
-export default function HomeScreen() {
+import { Button, StyleSheet, Text, View } from "react-native";
+import { Colors, GlobalStyles } from "../constants/style";
+import Post from "../components/Post";
+
+export default function HomeScreen({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitleStyle: {
+        ...GlobalStyles.title,
+      },
+    });
+  }, [navigation]);
   return (
     <View style={styles.rootContainer}>
       <View style={styles.contentContainer}>
-        <Text>HOME</Text>
+        <Post />
       </View>
     </View>
   );
@@ -20,6 +30,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   contentContainer: {
+    flex: 1,
     marginTop: 100,
   },
 });

@@ -29,4 +29,9 @@ export const GlobalStyles = StyleSheet.create({
   bold: {
     fontWeight: "bold",
   },
+  title: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: Colors.primary500,
+  },
 });
