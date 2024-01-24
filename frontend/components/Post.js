@@ -5,47 +5,57 @@ import { Colors, GlobalStyles } from "../constants/style";
 
 export default function Post() {
   return (
-    <Pressable
-      style={({ pressed }) => [styles.postContainer, pressed && styles.pressed]}
-      android_ripple={{ color: Colors.buttonRipple }}
-    >
-      <View style={styles.postHeader}>
-        <View style={styles.userContainer}>
-          <Text style={styles.userText}>User adm</Text>
+    <View style={styles.rootContainer}>
+      <Pressable
+        style={({ pressed }) => [
+          styles.postContainer,
+          pressed && styles.pressed,
+        ]}
+        android_ripple={{ color: Colors.buttonRipple }}
+      >
+        <View style={styles.postHeader}>
+          <View style={styles.userContainer}>
+            <Text style={styles.userText}>User adm</Text>
+          </View>
+          <View style={styles.avatarContainer}>
+            <Avatar.Image
+              style={styles.avatar}
+              source={require("../assets/DefaultAvatar.png")}
+              size={64}
+            />
+          </View>
+          <View style={styles.dateContainer}>
+            <Text style={styles.dateText}>24/01/24</Text>
+          </View>
         </View>
-        <View style={styles.avatarContainer}>
-          <Avatar.Image
-            style={styles.avatar}
-            source={require("../assets/DefaultAvatar.png")}
-            size={64}
+        <View style={styles.postContent}>
+          <Image
+            source={require("../assets/defaultPicture.png")}
+            style={styles.image}
           />
+          <Text style={styles.postText}>
+            Lorem ipsum dolor sit amet. Et quia architecto et ipsa fugiat est
+            voluptate voluptatem
+          </Text>
         </View>
-        <View style={styles.dateContainer}>
-          <Text style={styles.dateText}>24/01/24</Text>
-        </View>
-      </View>
-      <View style={styles.postContent}>
-        <Image
-          source={require("../assets/defaultPicture.png")}
-          style={styles.image}
-        />
-        <Text style={styles.postText}>
-          Lorem ipsum dolor sit amet. Et quia architecto et ipsa fugiat est
-          voluptate voluptatem
-        </Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    elevation: 8,
+    borderRadius: 20,
+    overflow: "hidden",
+  },
   postContainer: {
     backgroundColor: Colors.white,
+    paddingHorizontal: 16,
     justifyContent: "flex-start",
     alignItems: "flex-start",
     borderRadius: 20,
-    elevation: 8,
-    paddingHorizontal: 16,
+    overflow: "hidden",
   },
   pressed: {
     opacity: 0.85,

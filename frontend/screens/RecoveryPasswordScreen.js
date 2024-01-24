@@ -2,7 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
 import Input from "../components/Input";
 import Button from "../components/UI/Button";
-import { Feather } from "@expo/vector-icons";
+import ReturnIcon from "../components/UI/ReturnIcon";
 
 export default function RecoveryPasswordScreen({ navigation }) {
   function handleNavigation() {
@@ -11,14 +11,7 @@ export default function RecoveryPasswordScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.returnButton}>
-        <Feather
-          name="corner-down-left"
-          size={32}
-          color={Colors.primary500}
-          onPress={handleNavigation}
-        />
-      </View>
+      <ReturnIcon onPress={handleNavigation} />
       <ScrollView style={styles.scroll}>
         <View style={styles.rootContainer}>
           <Text style={styles.welcomeText}>Seja bem-vinde ao app do SAP!</Text>
@@ -49,10 +42,6 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     alignItems: "center",
-  },
-  returnButton: {
-    marginLeft: 16,
-    marginTop: 16,
   },
   welcomeText: {
     ...GlobalStyles.defaultText,

@@ -13,6 +13,8 @@ import HomeScreen from "./screens/HomeScreen";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
 import Navbar from "./components/UI/Navbar";
 import { Colors } from "./constants/style";
+import AddPostScreen from "./screens/AddPostScreen";
+import ReturnIcon from "./components/UI/ReturnIcon";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -26,6 +28,20 @@ function AuthStack() {
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Recovery" component={RecoveryPasswordScreen} />
+    </Stack.Navigator>
+  );
+}
+
+function StackWrapper() {
+  return (
+    <Stack.Navigator
+      screenOptions={({ navigation }) => ({
+        headerLeft: () => <ReturnIcon onPress={() => navigation.goBack()} />,
+        headerTransparent: true,
+        headerTitleAlign: "center",
+      })}
+    >
+      <Stack.Screen name="AddPost" component={AddPostScreen} />
     </Stack.Navigator>
   );
 }
@@ -54,6 +70,11 @@ function DrawerScreens() {
         options={{
           title: "Mural",
         }}
+      />
+      <Drawer.Screen
+        name="StackWrapper"
+        component={StackWrapper}
+        options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );
