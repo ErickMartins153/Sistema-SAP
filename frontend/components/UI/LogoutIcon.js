@@ -31,7 +31,7 @@ export default function LogoutIcon() {
       onPress={handleLogout}
     >
       <View style={styles.internalContainer}>
-        <Feather name="power" size={32} color={Colors.primary500} />
+        <Feather name="power" size={50} color={Colors.primary500} />
         <Text style={styles.text}>Sair</Text>
       </View>
     </Pressable>
@@ -39,12 +39,15 @@ export default function LogoutIcon() {
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    overflow: "hidden",
+  },
   container: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "flex-end",
     position: "absolute",
-    right: 0,
+    left: 12,
     bottom: 8,
     borderRadius: 16,
     overflow: "hidden",
@@ -59,9 +62,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    ...GlobalStyles.defaultText,
-    textAlign: "center",
-    fontSize: 16,
-    marginHorizontal: 8,
+    ...GlobalStyles.largeText,
+
+    marginHorizontal: 44,
   },
 });

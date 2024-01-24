@@ -10,8 +10,7 @@ import LoginScreen from "./screens/LoginScreen";
 import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
 import HomeScreen from "./screens/HomeScreen";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
-
-import DrawerList from "./components/UI/DrawerList";
+import Navbar from "./components/UI/Navbar";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -32,14 +31,19 @@ function AuthStack() {
 function DrawerScreens() {
   return (
     <Drawer.Navigator
-      drawerContent={(props) => <DrawerList {...props} />}
+      drawerContent={(props) => <Navbar {...props} />}
       screenOptions={{
-        drawerStyle: {
-          backgroundColor: "white",
-        },
+        headerTransparent: true,
+        headerTitleAlign: "center",
       }}
     >
-      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "Mural",
+        }}
+      />
     </Drawer.Navigator>
   );
 }
