@@ -3,14 +3,17 @@ import { Colors, GlobalStyles } from "../constants/style";
 import Input from "../components/Input";
 import Button from "../components/UI/Button";
 import LinkedText from "../components/UI/LinkedText";
+import { useContext } from "react";
+import { AuthContext } from "../store/auth-context";
 
 export default function LoginScreen({ navigation }) {
+  const authCtx = useContext(AuthContext);
   function handleNavigation(destiny) {
     navigation.navigate(destiny);
   }
 
   function handleLogin() {
-    navigation.navigate("Drawer");
+    authCtx.authenticate("test");
   }
 
   return (
