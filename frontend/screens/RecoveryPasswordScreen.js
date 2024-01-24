@@ -2,15 +2,23 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
 import Input from "../components/Input";
 import Button from "../components/UI/Button";
-import LinkedText from "../components/UI/LinkedText";
+import { Feather } from "@expo/vector-icons";
 
-export default function LoginScreen({ navigation }) {
-  function handleNavigation(destiny) {
-    navigation.navigate(destiny);
+export default function RecoveryPasswordScreen({ navigation }) {
+  function handleNavigation() {
+    navigation.goBack();
   }
 
   return (
     <View style={styles.screen}>
+      <View style={styles.returnButton}>
+        <Feather
+          name="corner-down-left"
+          size={32}
+          color={Colors.primary500}
+          onPress={handleNavigation}
+        />
+      </View>
       <ScrollView style={styles.scroll}>
         <View style={styles.rootContainer}>
           <Text style={styles.welcomeText}>Seja bem-vinde ao app do SAP!</Text>
@@ -20,22 +28,9 @@ export default function LoginScreen({ navigation }) {
           />
           <View style={styles.inputContainer}>
             <Input placeholder={"Email@upe.br"} icon="user" />
-            <View style={styles.passwordContainer}>
-              <Input
-                placeholder={"Digite sua senha"}
-                icon="lock"
-                mode="password"
-                style={styles.passwordInput}
-              />
-              <View style={styles.passwordTextContainer}>
-                <LinkedText onPress={handleNavigation.bind(this, "Recovery")}>
-                  Esqueci a senha
-                </LinkedText>
-              </View>
-            </View>
           </View>
           <View style={styles.buttonContainer}>
-            <Button>ENTRAR</Button>
+            <Button onPress={handleNavigation}>ENVIAR EMAIL</Button>
           </View>
         </View>
       </ScrollView>
@@ -55,9 +50,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+  returnButton: {
+    marginLeft: 16,
+    marginTop: 16,
+  },
   welcomeText: {
     ...GlobalStyles.defaultText,
     marginTop: "20%",
+
     textAlign: "center",
   },
   image: {
@@ -66,16 +66,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     marginTop: "5%",
-  },
-  passwordContainer: {
-    paddingBottom: 32,
-  },
-  passwordInput: {
-    marginBottom: 12,
-  },
-  passwordTextContainer: {
-    alignItems: "flex-end",
-    marginHorizontal: 16,
   },
 
   buttonContainer: {

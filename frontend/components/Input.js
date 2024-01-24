@@ -2,10 +2,17 @@ import { StyleSheet, TextInput, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
 import { Feather } from "@expo/vector-icons";
 import PasswordIcon from "./UI/PasswordIcon";
+import { useState } from "react";
 
-export default function Input({ placeholder, icon, mode }) {
+export default function Input({ placeholder, icon, mode, style }) {
+  const [hide, setHide] = useState(false);
+
+  function handleHide() {
+    setHide((prevState) => !prevState);
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Feather
         name={icon}
         size={24}
@@ -19,10 +26,14 @@ export default function Input({ placeholder, icon, mode }) {
         autoCapitalize="none"
         autoComplete="off"
         autoCorrect={false}
-        secureTextEntry={mode === "password"}
+        secureTextEntry={mode === "password" && !hide}
       />
       {mode === "password" && (
-        <PasswordIcon size={24} color={Colors.primaryAlpha} />
+        <PasswordIcon
+          size={24}
+          color={Colors.primaryAlpha}
+          onPress={handleHide}
+        />
       )}
     </View>
   );

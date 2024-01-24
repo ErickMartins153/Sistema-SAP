@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import LoginScreen from "./screens/LoginScreen";
+import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ function AuthStack() {
       }}
     >
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Recovery" component={RecoveryPasswordScreen} />
     </Stack.Navigator>
   );
 }
@@ -28,5 +30,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({});

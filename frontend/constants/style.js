@@ -5,7 +5,7 @@ export const Colors = {
   background: "#D9D9D9",
   primary500: "#447A7A",
   white: "#F8F1FF",
-  buttonBackground: "#5DA4A4",
+  accentColor: "#5DA4A4",
   buttonRipple: "#71c5c5",
 };
 

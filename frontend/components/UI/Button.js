@@ -1,10 +1,11 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../constants/style";
 
-export default function Button({ children }) {
+export default function Button({ children, onPress }) {
   return (
     <View style={styles.externalContainer}>
       <Pressable
+        onPress={onPress}
         style={({ pressed }) => [
           styles.internalContainer,
           pressed && styles.pressed,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.buttonBackground,
+    backgroundColor: Colors.accentColor,
     elevation: 4,
     overflow: "hidden",
   },

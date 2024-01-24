@@ -7,6 +7,7 @@ export default function PasswordIcon({ size, color, onPress }) {
 
   function handleIsActive() {
     setIsActive((prevState) => !prevState);
+    onPress();
   }
   return (
     <Pressable onPress={handleIsActive}>
