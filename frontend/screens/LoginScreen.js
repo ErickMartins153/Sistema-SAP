@@ -9,6 +9,10 @@ export default function LoginScreen({ navigation }) {
     navigation.navigate(destiny);
   }
 
+  function handleLogin() {
+    navigation.navigate("Drawer");
+  }
+
   return (
     <View style={styles.screen}>
       <ScrollView style={styles.scroll}>
@@ -35,7 +39,7 @@ export default function LoginScreen({ navigation }) {
             </View>
           </View>
           <View style={styles.buttonContainer}>
-            <Button>ENTRAR</Button>
+            <Button onPress={handleLogin}>ENTRAR</Button>
           </View>
         </View>
       </ScrollView>
