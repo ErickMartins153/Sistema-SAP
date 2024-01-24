@@ -19,6 +19,7 @@ export default function Navbar(props) {
             <Avatar.Image
               source={require("../../assets/DefaultAvatar.png")}
               size={144}
+              style={{ backgroundColor: Colors.accentColor }}
             />
             <View style={styles.userInfoSection}>
               <Title style={styles.userInfoText}>Fulano de tal</Title>
@@ -43,7 +44,7 @@ export default function Navbar(props) {
               page="Home"
             />
             <NavbarItem
-              label="Horario"
+              label="Horário"
               labelStyle={styles.LabelStyle}
               icon="calendar"
               size={50}

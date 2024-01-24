@@ -5,12 +5,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useContext } from "react";
+import { Feather } from "@expo/vector-icons";
 
 import LoginScreen from "./screens/LoginScreen";
 import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
 import HomeScreen from "./screens/HomeScreen";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
 import Navbar from "./components/UI/Navbar";
+import { Colors } from "./constants/style";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -32,10 +34,19 @@ function DrawerScreens() {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <Navbar {...props} />}
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerTransparent: true,
         headerTitleAlign: "center",
-      }}
+        drawerType: "slide",
+        headerLeft: () => (
+          <Feather
+            name="align-center"
+            size={32}
+            color={Colors.primary500}
+            onPress={navigation.toggleDrawer}
+          />
+        ),
+      })}
     >
       <Drawer.Screen
         name="Home"
