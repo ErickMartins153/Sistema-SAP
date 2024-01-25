@@ -24,11 +24,12 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "assets": ["./assets/fonts"],
     "plugins": [
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Poppins-Regular.ttf"]
+          "fonts": ["./assets/fonts/PoppinsRegular.ttf"]
         }
       ]
     ]

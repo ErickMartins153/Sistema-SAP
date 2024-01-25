@@ -4,8 +4,10 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useContext } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Feather } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 import LoginScreen from "./screens/LoginScreen";
 import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
@@ -18,6 +20,8 @@ import ReturnIcon from "./components/UI/ReturnIcon";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+SplashScreen.preventAutoHideAsync();
 
 function AuthStack() {
   return (
@@ -103,6 +107,19 @@ function Navigator() {
 }
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    PoppinsRegular: require("./assets/fonts/PoppinsRegular.ttf"),
+  });
+
+  useLayoutEffect(() => {
+    async function loadFonts() {
+      if (fontsLoaded || fontError) {
+        await SplashScreen.hideAsync();
+      }
+    }
+    loadFonts();
+  }, [fontsLoaded, fontError]);
+
   return (
     <AuthContextProvider>
       <StatusBar hidden={true} style="light" />
