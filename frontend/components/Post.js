@@ -1,5 +1,4 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { Avatar } from "react-native-paper";
 
 import { Colors, GlobalStyles } from "../constants/style";
 import UserAvatar from "./UI/UserAvatar";
