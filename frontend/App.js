@@ -4,10 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useContext, useLayoutEffect } from "react";
+import { useContext } from "react";
 import { Feather } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 
 import LoginScreen from "./screens/LoginScreen";
 import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
@@ -16,12 +14,10 @@ import AuthContextProvider, { AuthContext } from "./store/auth-context";
 import Navbar from "./components/UI/Navbar";
 import { Colors } from "./constants/style";
 import AddPostScreen from "./screens/AddPostScreen";
-import ReturnIcon from "./components/UI/ReturnIcon";
+import PostContextProvider from "./store/post-context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-
-SplashScreen.preventAutoHideAsync();
 
 function AuthStack() {
   return (
@@ -39,11 +35,10 @@ function AuthStack() {
 function StackWrapper() {
   return (
     <Stack.Navigator
-      screenOptions={({ navigation }) => ({
-        headerLeft: () => <ReturnIcon onPress={() => navigation.goBack()} />,
+      screenOptions={{
         headerTransparent: true,
         headerTitleAlign: "center",
-      })}
+      }}
     >
       <Stack.Screen
         name="AddPost"
@@ -63,36 +58,38 @@ function StackWrapper() {
 
 function DrawerScreens() {
   return (
-    <Drawer.Navigator
-      drawerContent={(props) => <Navbar {...props} />}
-      screenOptions={({ navigation }) => ({
-        headerTransparent: true,
-        headerTitleAlign: "center",
-        drawerType: "slide",
-        headerLeft: () => (
-          <Feather
-            name="align-center"
-            size={32}
-            color={Colors.primary500}
-            onPress={navigation.toggleDrawer}
-            style={{ marginLeft: 16 }}
-          />
-        ),
-      })}
-    >
-      <Drawer.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          title: "Mural",
-        }}
-      />
-      <Drawer.Screen
-        name="StackWrapper"
-        component={StackWrapper}
-        options={{ headerShown: false }}
-      />
-    </Drawer.Navigator>
+    <PostContextProvider>
+      <Drawer.Navigator
+        drawerContent={(props) => <Navbar {...props} />}
+        screenOptions={({ navigation }) => ({
+          headerTransparent: true,
+          headerTitleAlign: "center",
+          drawerType: "slide",
+          headerLeft: () => (
+            <Feather
+              name="align-center"
+              size={32}
+              color={Colors.primary500}
+              onPress={navigation.toggleDrawer}
+              style={{ marginLeft: 16 }}
+            />
+          ),
+        })}
+      >
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Mural",
+          }}
+        />
+        <Drawer.Screen
+          name="StackWrapper"
+          component={StackWrapper}
+          options={{ headerShown: false }}
+        />
+      </Drawer.Navigator>
+    </PostContextProvider>
   );
 }
 
@@ -107,19 +104,6 @@ function Navigator() {
 }
 
 export default function App() {
-  const [fontsLoaded, fontError] = useFonts({
-    PoppinsRegular: require("./assets/fonts/PoppinsRegular.ttf"),
-  });
-
-  useLayoutEffect(() => {
-    async function loadFonts() {
-      if (fontsLoaded || fontError) {
-        await SplashScreen.hideAsync();
-      }
-    }
-    loadFonts();
-  }, [fontsLoaded, fontError]);
-
   return (
     <AuthContextProvider>
       <StatusBar hidden={true} style="light" />
