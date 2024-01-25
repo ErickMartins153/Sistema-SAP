@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   text: {
     ...GlobalStyles.defaultText,
     textAlign: "center",
-    width: 120,
     borderBottomWidth: 2,
     borderBottomColor: Colors.accentColor,
   },

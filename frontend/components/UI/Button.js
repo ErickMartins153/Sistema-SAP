@@ -22,8 +22,6 @@ export default function Button({ children, onPress }) {
 
 const styles = StyleSheet.create({
   externalContainer: {
-    flex: 1,
-    marginBottom: 20,
     borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",
@@ -32,7 +30,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   internalContainer: {
-    flex: 1,
     paddingHorizontal: 32,
     paddingVertical: 16,
   },
