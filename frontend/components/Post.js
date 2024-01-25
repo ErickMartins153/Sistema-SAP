@@ -1,9 +1,16 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Colors, GlobalStyles } from "../constants/style";
 import UserAvatar from "./UI/UserAvatar";
+import FormattedImage from "./UI/FormattedImage";
 
-export default function Post() {
+export default function Post({ postData }) {
+  let imageUri = require("../assets/defaultPicture.png");
+
+  if (postData?.imageUri) {
+    imageUri = { uri: postData.imageUri };
+  }
+
   return (
     <View style={styles.rootContainer}>
       <Pressable
@@ -15,22 +22,18 @@ export default function Post() {
       >
         <View style={styles.postHeader}>
           <View style={styles.userContainer}>
-            <Text style={styles.userText}>User adm</Text>
+            <Text style={styles.userText}>{postData.user}</Text>
           </View>
           <UserAvatar size={64} />
           <View style={styles.dateContainer}>
-            <Text style={styles.dateText}>24/01/24</Text>
+            <Text style={styles.dateText}>
+              {postData.date.toLocaleString()}
+            </Text>
           </View>
         </View>
         <View style={styles.postContent}>
-          <Image
-            source={require("../assets/defaultPicture.png")}
-            style={styles.image}
-          />
-          <Text style={styles.postText}>
-            Lorem ipsum dolor sit amet. Et quia architecto et ipsa fugiat est
-            voluptate voluptatem
-          </Text>
+          <FormattedImage path={imageUri} />
+          <Text style={styles.postText}>{postData.description}</Text>
         </View>
       </Pressable>
     </View>
@@ -39,9 +42,11 @@ export default function Post() {
 
 const styles = StyleSheet.create({
   rootContainer: {
+    flex: 1,
     elevation: 8,
     borderRadius: 20,
     overflow: "hidden",
+    marginVertical: 8,
   },
   postContainer: {
     backgroundColor: Colors.white,
