@@ -41,7 +41,18 @@ function StackWrapper() {
         headerTitleAlign: "center",
       })}
     >
-      <Stack.Screen name="AddPost" component={AddPostScreen} />
+      <Stack.Screen
+        name="AddPost"
+        component={AddPostScreen}
+        options={{
+          title: "Add Post",
+          headerStyle: {
+            backgroundColor: Colors.background,
+            elevation: 0,
+          },
+          headerTransparent: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -60,6 +71,7 @@ function DrawerScreens() {
             size={32}
             color={Colors.primary500}
             onPress={navigation.toggleDrawer}
+            style={{ marginLeft: 16 }}
           />
         ),
       })}

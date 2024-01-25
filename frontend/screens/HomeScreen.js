@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
 import Post from "../components/Post";
 import PostButton from "../components/PostButton";

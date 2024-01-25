@@ -2,9 +2,9 @@ import { StyleSheet, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Colors } from "../../constants/style";
 
-export default function ReturnIcon({ onPress }) {
+export default function ReturnIcon({ onPress, style }) {
   return (
-    <View style={styles.returnButton}>
+    <View style={style}>
       <Feather
         name="corner-down-left"
         size={32}
@@ -14,10 +14,3 @@ export default function ReturnIcon({ onPress }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  returnButton: {
-    marginLeft: 16,
-    marginTop: 16,
-  },
-});

@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Avatar } from "react-native-paper";
 
 import { Colors, GlobalStyles } from "../constants/style";
+import UserAvatar from "./UI/UserAvatar";
 
 export default function Post() {
   return (
@@ -17,13 +18,7 @@ export default function Post() {
           <View style={styles.userContainer}>
             <Text style={styles.userText}>User adm</Text>
           </View>
-          <View style={styles.avatarContainer}>
-            <Avatar.Image
-              style={styles.avatar}
-              source={require("../assets/DefaultAvatar.png")}
-              size={64}
-            />
-          </View>
+          <UserAvatar size={64} />
           <View style={styles.dateContainer}>
             <Text style={styles.dateText}>24/01/24</Text>
           </View>
@@ -66,15 +61,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 4,
     paddingLeft: 8,
-  },
-  avatarContainer: {
-    borderRadius: 500,
-    padding: 2,
-    backgroundColor: Colors.accentColor,
-    overflow: "hidden",
-  },
-  avatar: {
-    backgroundColor: Colors.accentColor,
   },
   userContainer: {
     backgroundColor: Colors.accentColor,

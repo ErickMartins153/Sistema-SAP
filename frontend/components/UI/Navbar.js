@@ -1,10 +1,11 @@
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { StyleSheet, View } from "react-native";
-import { Avatar, Title, Caption, Drawer } from "react-native-paper";
+import { Title, Caption, Drawer } from "react-native-paper";
 
 import LogoutIcon from "./LogoutIcon";
 import { Colors, GlobalStyles } from "../../constants/style";
 import NavbarItem from "./NavbarItem";
+import UserAvatar from "./UserAvatar";
 
 export default function Navbar(props) {
   function handleNavigation(destinyPage) {
@@ -16,11 +17,7 @@ export default function Navbar(props) {
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.avatar}>
-            <Avatar.Image
-              source={require("../../assets/DefaultAvatar.png")}
-              size={144}
-              style={{ backgroundColor: Colors.accentColor }}
-            />
+            <UserAvatar size={144} />
             <View style={styles.userInfoSection}>
               <Title style={styles.userInfoText}>Fulano de tal</Title>
               <Caption>Cargo/função</Caption>

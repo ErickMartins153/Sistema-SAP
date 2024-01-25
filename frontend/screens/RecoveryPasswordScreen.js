@@ -11,7 +11,10 @@ export default function RecoveryPasswordScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-      <ReturnIcon onPress={handleNavigation} />
+      <ReturnIcon
+        onPress={handleNavigation}
+        style={{ paddingLeft: 16, paddingTop: 16 }}
+      />
       <ScrollView style={styles.scroll}>
         <View style={styles.rootContainer}>
           <Text style={styles.welcomeText}>Seja bem-vinde ao app do SAP!</Text>
