@@ -2,8 +2,8 @@ import { useLayoutEffect } from "react";
 
 import { StyleSheet, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
-import Post from "../components/Post";
 import PostButton from "../components/PostButton";
+import PostList from "../components/PostList";
 
 export default function HomeScreen({ navigation }) {
   useLayoutEffect(() => {
@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.rootContainer}>
       <View style={styles.contentContainer}>
-        <Post />
+        <PostList />
       </View>
       <PostButton />
     </View>

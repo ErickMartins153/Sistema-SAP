@@ -15,19 +15,19 @@ export const GlobalStyles = StyleSheet.create({
     fontSize: 12,
     color: Colors.primary500,
     textAlign: "center",
-    fontFamily: "PoppinsRegular",
+    //fontFamily: "Poppins-Regular",
   },
   defaultText: {
     fontSize: 16,
     color: Colors.primary500,
     textAlign: "center",
-    fontFamily: "PoppinsRegular",
+    //fontFamily: "Poppins-Regular",
   },
   largeText: {
     fontSize: 18,
     color: Colors.primary500,
     textAlign: "center",
-    fontFamily: "PoppinsRegular",
+    //fontFamily: "Poppins-Regular",
   },
   bold: {
     fontWeight: "bold",

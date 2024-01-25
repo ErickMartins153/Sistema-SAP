@@ -1,29 +1,45 @@
-import { useLayoutEffect, useState } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
   TextInput,
   View,
-  Image,
 } from "react-native";
 
 import { Colors, GlobalStyles } from "../constants/style";
 import UserAvatar from "../components/UI/UserAvatar";
 import PickerButton from "../components/PickerButton";
-import Button from "../components/UI/Button";
 import SubmitButton from "../components/UI/SubmitButton";
+import { PostContext } from "../store/post-context";
+import ReturnIcon from "../components/UI/ReturnIcon";
+import FormattedImage from "../components/UI/FormattedImage";
 
 export default function AddPostScreen({ navigation }) {
   const [appendedFiles, setAppendedFiles] = useState({});
+  const [description, setDescription] = useState(null);
+
+  const postCtx = useContext(PostContext);
+
+  let imagePath = require("../assets/defaultPicture.png");
+  const isImage = appendedFiles?.image ? true : false;
+
+  if (isImage) {
+    imagePath = { uri: appendedFiles.image[0].uri };
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitleStyle: {
         ...GlobalStyles.title,
       },
+      headerLeft: () => <ReturnIcon onPress={handleClearPage} />,
     });
   }, [navigation]);
+
+  function handleDescription(text) {
+    setDescription(text);
+  }
 
   function handleAppendFile(file, type) {
     if (file) {
@@ -33,6 +49,21 @@ export default function AddPostScreen({ navigation }) {
 
   function handleRemoveImage() {
     setAppendedFiles((prevFiles) => ({ ...prevFiles, image: null }));
+  }
+
+  function handleAddPost() {
+    const imageSanitizer = appendedFiles?.image
+      ? appendedFiles?.image[0].uri
+      : null;
+    const descriptionSanitizer = description ?? "Sem descrição";
+    postCtx.addPost("erick", new Date(), imageSanitizer, descriptionSanitizer);
+    handleClearPage();
+  }
+
+  function handleClearPage() {
+    setAppendedFiles({});
+    setDescription(null);
+    navigation.goBack();
   }
 
   return (
@@ -53,26 +84,17 @@ export default function AddPostScreen({ navigation }) {
                 placeholder="O que está acontecendo?"
                 maxLength={280}
                 style={styles.textInput}
+                onChangeText={handleDescription}
+                value={description}
               />
             </View>
           </View>
           <View style={styles.filesContainer}>
-            <View style={styles.imageButtonContainer}>
-              {appendedFiles?.image ? (
-                <>
-                  <Image
-                    style={styles.image}
-                    source={{ uri: appendedFiles.image[0].uri }}
-                  />
-                  <Button onPress={handleRemoveImage}>Remover imagem</Button>
-                </>
-              ) : (
-                <Image
-                  style={styles.image}
-                  source={require("../assets/defaultPicture.png")}
-                />
-              )}
-            </View>
+            <FormattedImage
+              path={imagePath}
+              onDelete={handleRemoveImage}
+              deleteButton={isImage}
+            />
           </View>
         </View>
         <View style={styles.buttonsContainer}>
@@ -82,7 +104,7 @@ export default function AddPostScreen({ navigation }) {
             <PickerButton size={32} icon="camera" />
           </View>
           <View style={styles.submitButton}>
-            <SubmitButton size={32} />
+            <SubmitButton size={32} onSubmit={handleAddPost} />
           </View>
         </View>
       </ScrollView>
@@ -97,13 +119,13 @@ const styles = StyleSheet.create({
   },
   section: {
     minHeight: 500,
-    height: 600,
     paddingTop: 100,
     backgroundColor: Colors.white,
     elevation: 4,
     marginHorizontal: 12,
     marginTop: 6,
     borderRadius: 6,
+    paddingBottom: 16,
   },
   AvatarInputContainer: {
     flexDirection: "row",

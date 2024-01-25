@@ -4,11 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 
 import { Colors } from "../../constants/style";
 
-export default function SubmitButton({ size }) {
-  const navigation = useNavigation();
-
+export default function SubmitButton({ size, onSubmit }) {
   function handleSubmition() {
-    navigation.goBack();
+    onSubmit();
   }
   return (
     <View style={styles.container}>
