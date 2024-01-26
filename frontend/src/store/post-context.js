@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const dummyId = new Date().toISOString() + Math.random().toString();
 const DUMMY_POST = {
   id: dummyId,
-  user: "Erick",
+  user: "Fulano de tal",
   imageUri: null,
   description:
     "Lorem ipsum dolor sit amet. Et quia architecto et ipsa fugiat est voluptate voluptatem",

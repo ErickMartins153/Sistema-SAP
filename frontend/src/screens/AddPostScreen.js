@@ -56,7 +56,12 @@ export default function AddPostScreen({ navigation }) {
       ? appendedFiles?.image[0].uri
       : null;
     const descriptionSanitizer = description ?? "Sem descrição";
-    postCtx.addPost("erick", new Date(), imageSanitizer, descriptionSanitizer);
+    postCtx.addPost(
+      "Fulano de tal",
+      new Date(),
+      imageSanitizer,
+      descriptionSanitizer
+    );
     handleClearPage();
   }
 
@@ -166,6 +171,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
+    alignItems: "center",
   },
   filesButtonsContainer: {
     flexDirection: "row",

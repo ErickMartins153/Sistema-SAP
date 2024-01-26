@@ -25,6 +25,7 @@ export default function PostList() {
         keyExtractor={(post) => post.id}
         onRefresh={handleRefresh}
         refreshing={isRefreshing}
+        contentContainerStyle={{ paddingBottom: 24 }}
       />
     </>
   );

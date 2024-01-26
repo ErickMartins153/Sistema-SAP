@@ -12,6 +12,7 @@ export default function PickerButton({ icon, size, onConfirm, type, style }) {
       onConfirm(image.assets, "image");
     }
     if (type === "camera") {
+      alert("Em breve!");
     }
   }
   return (

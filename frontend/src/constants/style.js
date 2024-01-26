@@ -8,6 +8,7 @@ export const Colors = {
   accentColor: "#5DA4A4",
   buttonRipple: "#71c5c5",
   borderGreen: "#2A5626",
+  error50: "#f01212",
 };
 
 export const GlobalStyles = StyleSheet.create({

@@ -34,12 +34,14 @@ export default function PostScreen({ route, navigation }) {
           </View>
           <Text style={styles.description}>{postData.description}</Text>
         </View>
-        <SubmitButton
-          icon="message-square"
-          size={32}
-          style={styles.submitContainer}
-          onSubmit={handleComment}
-        />
+        <View style={styles.submitContainer}>
+          <SubmitButton
+            icon="message-square"
+            size={32}
+            style={styles.submitButton}
+            onSubmit={handleComment}
+          />
+        </View>
       </View>
     </View>
   );
@@ -54,21 +56,18 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginVertical: 64,
-    width: "80%",
+    marginVertical: 32,
+    width: "90%",
     backgroundColor: Colors.white,
     elevation: 4,
     borderRadius: 20,
-  },
-  returnIcon: {
-    padding: 24,
   },
   postContent: {
     paddingHorizontal: "auto",
     marginTop: 18,
   },
   avatarContainer: {
-    width: "28%",
+    width: 86,
     marginLeft: 24,
   },
   userContainer: {
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     paddingRight: 52,
     borderRadius: 8,
     position: "absolute",
-    left: "28%",
+    left: "24%",
     bottom: "20%",
   },
   userText: {
@@ -101,8 +100,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   submitContainer: {
-    position: "absolute",
-    bottom: 12,
-    right: 12,
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingVertical: 8,
+  },
+  submitButton: {
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
+    paddingHorizontal: 16,
+    overflow: "hidden",
   },
 });
