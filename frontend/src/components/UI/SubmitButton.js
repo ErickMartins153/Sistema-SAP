@@ -1,21 +1,21 @@
 import { Feather } from "@expo/vector-icons";
-import { Pressable, StyleSheet, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Pressable, StyleSheet, Vibration, View } from "react-native";
 
 import { Colors } from "../../constants/style";
 
-export default function SubmitButton({ size, onSubmit }) {
+export default function SubmitButton({ icon, size, onSubmit, style }) {
   function handleSubmition() {
+    Vibration.vibrate(10);
     onSubmit();
   }
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Pressable
         style={({ pressed }) => [styles.pressable, pressed && styles.pressed]}
         android_ripple={{ color: Colors.buttonRipple }}
         onPress={handleSubmition}
       >
-        <Feather name="send" size={size} color="white" />
+        <Feather name={icon ?? "send"} size={size} color="white" />
       </Pressable>
     </View>
   );

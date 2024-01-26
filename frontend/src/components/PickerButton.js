@@ -1,11 +1,12 @@
 import { Feather } from "@expo/vector-icons";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, Vibration } from "react-native";
 
 import { Colors } from "../constants/style";
 import { pickImage } from "../util/pickers";
 
-export default function PickerButton({ icon, size, onConfirm, type }) {
+export default function PickerButton({ icon, size, onConfirm, type, style }) {
   async function handleImagePicker() {
+    Vibration.vibrate(10);
     if (type === "image") {
       const image = await pickImage();
       onConfirm(image.assets, "image");
@@ -15,7 +16,11 @@ export default function PickerButton({ icon, size, onConfirm, type }) {
   }
   return (
     <Pressable
-      style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+      style={({ pressed }) => [
+        styles.container,
+        pressed && styles.pressed,
+        style,
+      ]}
       android_ripple={{ color: Colors.buttonRipple }}
       onPress={handleImagePicker}
     >

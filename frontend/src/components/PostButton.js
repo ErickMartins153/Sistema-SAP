@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, Vibration, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons/";
 import { Colors } from "../constants/style";
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +7,7 @@ export default function PostButton() {
   const navigation = useNavigation();
 
   function handleAddPost() {
+    Vibration.vibrate(10);
     navigation.navigate("StackWrapper");
   }
 

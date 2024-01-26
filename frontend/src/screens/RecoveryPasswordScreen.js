@@ -11,10 +11,7 @@ export default function RecoveryPasswordScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-      <ReturnIcon
-        onPress={handleNavigation}
-        style={{ paddingLeft: 16, paddingTop: 16 }}
-      />
+      <ReturnIcon onPress={handleNavigation} />
       <ScrollView style={styles.scroll}>
         <View style={styles.rootContainer}>
           <Text style={styles.welcomeText}>Seja bem-vinde ao app do SAP!</Text>
@@ -48,12 +45,12 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     ...GlobalStyles.defaultText,
-    marginTop: "20%",
+    marginTop: "12%",
 
     textAlign: "center",
   },
   image: {
-    marginTop: "35%",
+    marginTop: "20%",
   },
   inputContainer: {
     flex: 1,

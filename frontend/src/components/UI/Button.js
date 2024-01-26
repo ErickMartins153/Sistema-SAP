@@ -1,11 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, Vibration, View } from "react-native";
 import { Colors } from "../../constants/style";
 
 export default function Button({ children, onPress }) {
+  function handlePress() {
+    Vibration.vibrate(10);
+    onPress();
+  }
+
   return (
     <View style={styles.externalContainer}>
       <Pressable
-        onPress={onPress}
+        onPress={handlePress}
         style={({ pressed }) => [
           styles.internalContainer,
           pressed && styles.pressed,
