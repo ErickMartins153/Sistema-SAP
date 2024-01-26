@@ -1,14 +1,21 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Colors, GlobalStyles } from "../constants/style";
 import UserAvatar from "./UI/UserAvatar";
 import FormattedImage from "./UI/FormattedImage";
 
 export default function Post({ postData }) {
+  const navigation = useNavigation();
+
   let imageUri = require("../assets/defaultPicture.png");
 
   if (postData?.imageUri) {
     imageUri = { uri: postData.imageUri };
+  }
+
+  function handleShowPost() {
+    navigation.navigate("PostScreen");
   }
 
   return (
@@ -19,6 +26,7 @@ export default function Post({ postData }) {
           pressed && styles.pressed,
         ]}
         android_ripple={{ color: Colors.buttonRipple }}
+        onPress={handleShowPost}
       >
         <View style={styles.postHeader}>
           <View style={styles.userContainer}>
