@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, Vibration, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Colors, GlobalStyles } from "../constants/style";
@@ -8,14 +8,18 @@ import FormattedImage from "./UI/FormattedImage";
 export default function Post({ postData }) {
   const navigation = useNavigation();
 
-  let imageUri = require("../assets/defaultPicture.png");
+  let imageUri = null;
 
   if (postData?.imageUri) {
-    imageUri = { uri: postData.imageUri };
+    imageUri = postData.imageUri;
   }
 
   function handleShowPost() {
-    navigation.navigate("PostScreen");
+    Vibration.vibrate(10);
+    navigation.navigate("PostScreen", {
+      ...postData,
+      date: postData.toLocaleString(),
+    });
   }
 
   return (
@@ -51,10 +55,11 @@ export default function Post({ postData }) {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    elevation: 8,
     borderRadius: 20,
     overflow: "hidden",
     marginVertical: 8,
+    marginHorizontal: 8,
+    elevation: 8,
   },
   postContainer: {
     backgroundColor: Colors.white,
@@ -62,6 +67,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     borderRadius: 20,
+    paddingBottom: 12,
+    marginBottom: 12,
     overflow: "hidden",
   },
   pressed: {
@@ -76,11 +83,11 @@ const styles = StyleSheet.create({
   },
   userContainer: {
     backgroundColor: Colors.accentColor,
-    padding: 8,
-    paddingLeft: 24,
+    paddingVertical: 8,
+    paddingHorizontal: 24,
     borderRadius: 8,
     position: "absolute",
-    left: 56,
+    left: 64,
   },
   userText: {
     ...GlobalStyles.smallText,

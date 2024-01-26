@@ -2,9 +2,15 @@ import { Image, StyleSheet, View } from "react-native";
 import Button from "./Button";
 
 export default function FormattedImage({ path, deleteButton, onDelete }) {
+  let imagePath = require("../../assets/defaultPicture.png");
+
+  if (typeof path !== "number" && path !== null) {
+    imagePath = path?.uri ? path : { uri: path };
+  }
+
   return (
     <View style={styles.imageButtonContainer}>
-      <Image style={styles.image} source={path} />
+      <Image style={styles.image} source={imagePath} />
       {deleteButton && <Button onPress={onDelete}>Remover imagem</Button>}
     </View>
   );

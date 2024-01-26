@@ -21,11 +21,11 @@ export default function AddPostScreen({ navigation }) {
 
   const postCtx = useContext(PostContext);
 
-  let imagePath = require("../assets/defaultPicture.png");
+  let imagePath = null;
   const isImage = appendedFiles?.image ? true : false;
 
   if (isImage) {
-    imagePath = { uri: appendedFiles.image[0].uri };
+    imagePath = appendedFiles.image[0].uri;
   }
 
   useLayoutEffect(() => {

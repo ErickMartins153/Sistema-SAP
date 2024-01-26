@@ -16,6 +16,7 @@ import AuthContextProvider, { AuthContext } from "./src/store/auth-context";
 import Navbar from "./src/components/UI/Navbar";
 import { Colors } from "./src/constants/style";
 import PostContextProvider from "./src/store/post-context";
+import PostScreen from "./src/screens/PostScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -89,6 +90,11 @@ function DrawerScreens() {
           component={StackWrapper}
           options={{ headerShown: false }}
         />
+        <Drawer.Screen
+          name="PostScreen"
+          component={PostScreen}
+          options={{ headerShown: false }}
+        />
       </Drawer.Navigator>
     </PostContextProvider>
   );
@@ -107,7 +113,7 @@ function Navigator() {
 export default function App() {
   return (
     <AuthContextProvider>
-      <StatusBar hidden={true} style="light" />
+      <StatusBar style="auto" />
 
       <Navigator />
     </AuthContextProvider>

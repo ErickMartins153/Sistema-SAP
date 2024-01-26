@@ -1,7 +1,8 @@
 import { createContext, useState } from "react";
 
+const dummyId = new Date().toISOString() + Math.random().toString();
 const DUMMY_POST = {
-  id: new Date().toISOString() + Math.random().toString(),
+  id: dummyId,
   user: "Erick",
   imageUri: null,
   description:
@@ -22,7 +23,7 @@ export default function PostContextProvider({ children }) {
     setPosts((prevPosts) => [
       ...prevPosts,
       {
-        id: new Date().toISOString() + Math.random().toString(),
+        id: new Date().toISOString() + Math.random().toLocaleString(),
         user,
         date,
         imageUri,
