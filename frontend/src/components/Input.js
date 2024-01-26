@@ -4,11 +4,25 @@ import { Feather } from "@expo/vector-icons";
 import PasswordIcon from "./UI/PasswordIcon";
 import { useState } from "react";
 
-export default function Input({ placeholder, icon, mode, style }) {
+export default function Input({
+  placeholder,
+  icon,
+  mode,
+  style,
+  maxLength,
+  value,
+  onChangeText,
+  field,
+}) {
   const [hide, setHide] = useState(false);
-
   function handleHide() {
     setHide((prevState) => !prevState);
+  }
+
+  function handleText(text) {
+    if (onChangeText) {
+      onChangeText(text, field);
+    }
   }
 
   return (
@@ -27,6 +41,9 @@ export default function Input({ placeholder, icon, mode, style }) {
         autoComplete="off"
         autoCorrect={false}
         secureTextEntry={mode === "password" && !hide}
+        maxLength={maxLength}
+        value={value}
+        onChangeText={handleText}
       />
       {mode === "password" && (
         <PasswordIcon

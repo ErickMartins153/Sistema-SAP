@@ -8,25 +8,26 @@ export default function Button({ children, onPress }) {
   }
 
   return (
-    <View style={styles.externalContainer}>
-      <Pressable
-        onPress={handlePress}
-        style={({ pressed }) => [
-          styles.internalContainer,
-          pressed && styles.pressed,
-        ]}
-        android_ripple={{ color: Colors.buttonRipple }}
-      >
+    <Pressable
+      onPress={handlePress}
+      style={({ pressed }) => [
+        styles.externalContainer,
+        pressed && styles.pressed,
+      ]}
+      android_ripple={{ color: Colors.buttonRipple }}
+    >
+      <View style={styles.internalContainer}>
         <View>
           <Text style={styles.text}>{children}</Text>
         </View>
-      </Pressable>
-    </View>
+      </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   externalContainer: {
+    flex: 1,
     borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
   internalContainer: {
     paddingHorizontal: 32,
     paddingVertical: 16,
+    borderRadius: 18,
+    overflow: "hidden",
   },
   pressed: {
     opacity: 0.75,
