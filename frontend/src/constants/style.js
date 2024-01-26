@@ -38,4 +38,8 @@ export const GlobalStyles = StyleSheet.create({
     color: Colors.primary500,
     fontWeight: "bold",
   },
+  headerIcon: {
+    marginTop: 48,
+    marginLeft: 24,
+  },
 });

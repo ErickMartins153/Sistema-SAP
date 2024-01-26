@@ -1,12 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useContext } from "react";
 
 import { Colors, GlobalStyles } from "../constants/style";
-import ReturnIcon from "../components/UI/ReturnIcon";
+import Icon from "../components/UI/Icon";
 import UserAvatar from "../components/UI/UserAvatar";
 import FormattedImage from "../components/UI/FormattedImage";
 import SubmitButton from "../components/UI/SubmitButton";
+import { AuthContext } from "../store/auth-context";
 
 export default function PostScreen({ route, navigation }) {
+  const { status } = useContext(AuthContext);
   const postData = route.params;
 
   function handleComment() {
@@ -16,10 +19,20 @@ export default function PostScreen({ route, navigation }) {
   return (
     <View style={styles.rootContainer}>
       <View style={styles.contentContainer}>
-        <ReturnIcon
-          style={styles.returnIcon}
-          onPress={() => navigation.navigate("Home")}
-        />
+        <View style={styles.headerIcons}>
+          <Icon
+            icon="corner-down-left"
+            style={styles.icon}
+            onPress={() => navigation.navigate("Home")}
+          />
+          {status === "admin" && (
+            <Icon
+              icon="trash-2"
+              style={styles.icon}
+              iconColor={Colors.error50}
+            />
+          )}
+        </View>
         <View style={styles.postContent}>
           <View style={styles.userContainer}>
             <Text style={styles.userText}>{postData.user}</Text>
@@ -61,6 +74,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     elevation: 4,
     borderRadius: 20,
+  },
+  headerIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  icon: {
+    marginLeft: 0,
+    marginTop: 12,
   },
   postContent: {
     paddingHorizontal: "auto",

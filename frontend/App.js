@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useContext } from "react";
-import { Feather } from "@expo/vector-icons";
 
 import LoginScreen from "./src/screens/LoginScreen";
 import RecoveryPasswordScreen from "./src/screens/RecoveryPasswordScreen";
@@ -17,6 +16,7 @@ import Navbar from "./src/components/UI/Navbar";
 import { Colors } from "./src/constants/style";
 import PostContextProvider from "./src/store/post-context";
 import PostScreen from "./src/screens/PostScreen";
+import Icon from "./src/components/UI/Icon";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -68,12 +68,10 @@ function DrawerScreens() {
           headerTitleAlign: "center",
           drawerType: "slide",
           headerLeft: () => (
-            <Feather
-              name="align-center"
-              size={32}
-              color={Colors.primary500}
+            <Icon
+              icon="align-center"
               onPress={navigation.toggleDrawer}
-              style={{ marginLeft: 16 }}
+              style={{ marginLeft: 16, marginTop: 0 }}
             />
           ),
         })}

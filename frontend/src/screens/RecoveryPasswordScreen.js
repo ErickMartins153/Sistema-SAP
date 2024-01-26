@@ -2,7 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors, GlobalStyles } from "../constants/style";
 import Input from "../components/Input";
 import Button from "../components/UI/Button";
-import ReturnIcon from "../components/UI/ReturnIcon";
+import Icon from "../components/UI/Icon";
 
 export default function RecoveryPasswordScreen({ navigation }) {
   function handleNavigation() {
@@ -11,7 +11,7 @@ export default function RecoveryPasswordScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-      <ReturnIcon onPress={handleNavigation} />
+      <Icon onPress={handleNavigation} icon="corner-down-left" />
       <ScrollView style={styles.scroll}>
         <View style={styles.rootContainer}>
           <Text style={styles.welcomeText}>Seja bem-vinde ao app do SAP!</Text>

@@ -12,7 +12,7 @@ import UserAvatar from "../components/UI/UserAvatar";
 import PickerButton from "../components/PickerButton";
 import SubmitButton from "../components/UI/SubmitButton";
 import { PostContext } from "../store/post-context";
-import ReturnIcon from "../components/UI/ReturnIcon";
+import Icon from "../components/UI/Icon";
 import FormattedImage from "../components/UI/FormattedImage";
 
 export default function AddPostScreen({ navigation }) {
@@ -33,7 +33,14 @@ export default function AddPostScreen({ navigation }) {
       headerTitleStyle: {
         ...GlobalStyles.title,
       },
-      headerLeft: () => <ReturnIcon onPress={handleClearPage} />,
+      title: "Postar",
+      headerLeft: () => (
+        <Icon
+          onPress={handleClearPage}
+          icon="corner-down-left"
+          style={styles.returnIcon}
+        />
+      ),
     });
   }, [navigation]);
 
@@ -126,6 +133,10 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  returnIcon: {
+    marginTop: 12,
+    marginLeft: 0,
   },
   section: {
     minHeight: 500,
