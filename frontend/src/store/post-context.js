@@ -33,7 +33,7 @@ export default function PostContextProvider({ children }) {
   }
 
   function deletePost(postId) {
-    setPosts((prevPosts) => prevPosts.filter((post) => post !== postId));
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
   }
 
   const value = {

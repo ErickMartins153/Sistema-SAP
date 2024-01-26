@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 4,
     paddingLeft: 8,
+    minWidth: 320,
   },
   userContainer: {
     backgroundColor: Colors.accentColor,

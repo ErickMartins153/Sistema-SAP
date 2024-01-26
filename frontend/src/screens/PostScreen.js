@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { useContext } from "react";
 
 import { Colors, GlobalStyles } from "../constants/style";
@@ -7,13 +7,35 @@ import UserAvatar from "../components/UI/UserAvatar";
 import FormattedImage from "../components/UI/FormattedImage";
 import SubmitButton from "../components/UI/SubmitButton";
 import { AuthContext } from "../store/auth-context";
+import { PostContext } from "../store/post-context";
 
 export default function PostScreen({ route, navigation }) {
   const { status } = useContext(AuthContext);
+  const { deletePost, posts } = useContext(PostContext);
   const postData = route.params;
 
   function handleComment() {
     alert("Em breve!");
+  }
+
+  function handleAlert() {
+    Alert.alert(
+      "Você tem certeza?",
+      "Uma vez deletado esse post não poderá ser recuperado!",
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Confirmar",
+          style: "destructive",
+          onPress: () => handleDelete(postData.id),
+        },
+      ]
+    );
+  }
+
+  function handleDelete(id) {
+    deletePost(id);
+    navigation.goBack();
   }
 
   return (
@@ -30,6 +52,7 @@ export default function PostScreen({ route, navigation }) {
               icon="trash-2"
               style={styles.icon}
               iconColor={Colors.error50}
+              onPress={handleAlert}
             />
           )}
         </View>

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Text } from "react-native";
 import Post from "./Post";
 import { PostContext } from "../store/post-context";
+import Fallback from "./Fallback";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -17,6 +18,11 @@ export default function PostList() {
   function renderPost(post) {
     return <Post postData={post.item} />;
   }
+
+  if (posts.length === 0) {
+    return <Fallback />;
+  }
+
   return (
     <>
       <FlatList
