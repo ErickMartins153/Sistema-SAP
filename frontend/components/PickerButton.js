@@ -4,10 +4,14 @@ import { Pressable, StyleSheet } from "react-native";
 import { Colors } from "../constants/style";
 import { pickImage } from "../util/pickers";
 
-export default function PickerButton({ icon, size, onConfirm }) {
+export default function PickerButton({ icon, size, onConfirm, type }) {
   async function handleImagePicker() {
-    const image = await pickImage();
-    onConfirm(image.assets, "image");
+    if (type === "image") {
+      const image = await pickImage();
+      onConfirm(image.assets, "image");
+    }
+    if (type === "camera") {
+    }
   }
   return (
     <Pressable

@@ -7,14 +7,15 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useContext } from "react";
 import { Feather } from "@expo/vector-icons";
 
-import LoginScreen from "./screens/LoginScreen";
-import RecoveryPasswordScreen from "./screens/RecoveryPasswordScreen";
-import HomeScreen from "./screens/HomeScreen";
-import AuthContextProvider, { AuthContext } from "./store/auth-context";
-import Navbar from "./components/UI/Navbar";
-import { Colors } from "./constants/style";
-import AddPostScreen from "./screens/AddPostScreen";
-import PostContextProvider from "./store/post-context";
+import LoginScreen from "./src/screens/LoginScreen";
+import RecoveryPasswordScreen from "./src/screens/RecoveryPasswordScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import AddPostScreen from "./src/screens/AddPostScreen";
+
+import AuthContextProvider, { AuthContext } from "./src/store/auth-context";
+import Navbar from "./src/components/UI/Navbar";
+import { Colors } from "./src/constants/style";
+import PostContextProvider from "./src/store/post-context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();

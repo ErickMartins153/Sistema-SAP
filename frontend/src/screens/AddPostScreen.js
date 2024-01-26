@@ -99,9 +99,14 @@ export default function AddPostScreen({ navigation }) {
         </View>
         <View style={styles.buttonsContainer}>
           <View style={styles.filesButtonsContainer}>
-            <PickerButton size={32} icon="image" onConfirm={handleAppendFile} />
+            <PickerButton
+              size={32}
+              icon="image"
+              onConfirm={handleAppendFile}
+              type="image"
+            />
             <PickerButton size={32} icon="link" />
-            <PickerButton size={32} icon="camera" />
+            <PickerButton size={32} icon="camera" type="camera" />
           </View>
           <View style={styles.submitButton}>
             <SubmitButton size={32} onSubmit={handleAddPost} />

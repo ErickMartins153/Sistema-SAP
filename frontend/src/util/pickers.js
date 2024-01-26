@@ -8,3 +8,5 @@ export async function pickImage() {
     throw new Error(error);
   }
 }
+
+export async function pickPhoto() {}
