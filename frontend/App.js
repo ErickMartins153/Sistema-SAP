@@ -17,6 +17,7 @@ import { Colors } from "./src/constants/style";
 import PostContextProvider from "./src/store/post-context";
 import PostScreen from "./src/screens/PostScreen";
 import Icon from "./src/components/UI/Icon";
+import ProfileScreen from "./src/screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -92,6 +93,11 @@ function DrawerScreens() {
           name="PostScreen"
           component={PostScreen}
           options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: "" }}
         />
       </Drawer.Navigator>
     </PostContextProvider>

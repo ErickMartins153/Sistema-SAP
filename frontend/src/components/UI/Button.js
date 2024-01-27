@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, Vibration, View } from "react-native";
 import { Colors } from "../../constants/style";
 
-export default function Button({ children, onPress }) {
+export default function Button({ children, onPress, style, labelStyle }) {
   function handlePress() {
     Vibration.vibrate(10);
     onPress();
@@ -13,12 +13,13 @@ export default function Button({ children, onPress }) {
       style={({ pressed }) => [
         styles.externalContainer,
         pressed && styles.pressed,
+        style,
       ]}
       android_ripple={{ color: Colors.buttonRipple }}
     >
       <View style={styles.internalContainer}>
         <View>
-          <Text style={styles.text}>{children}</Text>
+          <Text style={[styles.text, labelStyle]}>{children}</Text>
         </View>
       </View>
     </Pressable>
@@ -27,7 +28,6 @@ export default function Button({ children, onPress }) {
 
 const styles = StyleSheet.create({
   externalContainer: {
-    flex: 1,
     borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",

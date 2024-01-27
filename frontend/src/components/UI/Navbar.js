@@ -6,8 +6,12 @@ import LogoutIcon from "./LogoutIcon";
 import { Colors, GlobalStyles } from "../../constants/style";
 import NavbarItem from "./NavbarItem";
 import UserAvatar from "./UserAvatar";
+import { useContext } from "react";
+import { AuthContext } from "../../store/auth-context";
 
 export default function Navbar(props) {
+  const { status } = useContext(AuthContext);
+
   function handleNavigation(destinyPage) {
     props.navigation.navigate(destinyPage);
   }
@@ -30,7 +34,7 @@ export default function Navbar(props) {
               icon="user"
               size={50}
               onPress={handleNavigation}
-              page="Home"
+              page="Profile"
             />
             <NavbarItem
               label="Mural"
@@ -48,14 +52,16 @@ export default function Navbar(props) {
               onPress={handleNavigation}
               page="Home"
             />
-            <NavbarItem
-              label="Gerenciar Usuários"
-              labelStyle={styles.LabelStyle}
-              icon="users"
-              size={50}
-              onPress={handleNavigation}
-              page="Home"
-            />
+            {status === "admin" && (
+              <NavbarItem
+                label="Gerenciar Usuários"
+                labelStyle={styles.LabelStyle}
+                icon="users"
+                size={50}
+                onPress={handleNavigation}
+                page="Home"
+              />
+            )}
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
