@@ -20,7 +20,7 @@ export default function LoginForm({ onSubmit, isvalid, onInput }) {
   }
 
   function handleLogin() {
-    onSubmit(inputs.login, inputs.password);
+    onSubmit(inputs.login.toLowerCase(), inputs.password);
   }
 
   return (

@@ -11,7 +11,7 @@ export default function LoginScreen() {
   const authCtx = useContext(AuthContext);
 
   function handleLogin(login, password) {
-    const valid = authCtx.authenticate(login);
+    const valid = authCtx.authenticate(login.toLowerCase().trim());
     setIsValid(valid);
   }
 

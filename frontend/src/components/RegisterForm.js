@@ -8,14 +8,25 @@ import { AuthContext } from "../store/auth-context";
 export default function RegisterForm() {
   const { addUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
+  const [isInvalid, setIsInvalid] = useState(false);
 
   function handleEmail(text) {
+    setIsInvalid(false);
     setEmail(text);
   }
 
   function handleSubmit() {
+    if (!email) {
+      setIsInvalid(true);
+      return;
+    }
     const name = email.split("@")[0];
-    addUser(email, name);
+    const added = addUser(name.toLowerCase().trim(), email.toLowerCase());
+    if (added) {
+      setEmail();
+    } else {
+      setIsInvalid(true);
+    }
   }
 
   return (
@@ -27,7 +38,7 @@ export default function RegisterForm() {
           placeholder="email@upe.br"
           value={email}
           onChangeText={handleEmail}
-          style={styles.input}
+          style={[styles.input, isInvalid && styles.invalid]}
         />
         <Icon
           icon="arrow-right-circle"
@@ -60,5 +71,9 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 8,
     padding: 8,
+  },
+  invalid: {
+    borderWidth: 2,
+    borderColor: Colors.error50,
   },
 });

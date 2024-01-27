@@ -20,10 +20,12 @@ export default function AuthContextProvider({ children }) {
   ]);
 
   function authenticate(token) {
-    const devToken = token === "" ? "admin" : token;
-    if (devToken === "admin" || devToken === "user") {
-      setAuthToken(devToken);
-      setStatus(devToken);
+    const devUser = token.split("@upe.br")[0];
+    const isValid = users.some((user) => user.name === devUser);
+
+    if (isValid) {
+      setAuthToken(token);
+      setStatus(token);
       return true;
     }
     return false;
@@ -34,7 +36,11 @@ export default function AuthContextProvider({ children }) {
   }
 
   function addUser(name, email) {
+    if (users.some((user) => user.name === name)) {
+      return false;
+    }
     setUsers((prevUsers) => [...prevUsers, { name: name, email: email }]);
+    return true;
   }
 
   function deleteUser(name) {
