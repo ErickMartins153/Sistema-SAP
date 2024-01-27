@@ -18,6 +18,7 @@ import PostContextProvider from "./src/store/post-context";
 import PostScreen from "./src/screens/PostScreen";
 import Icon from "./src/components/UI/Icon";
 import ProfileScreen from "./src/screens/ProfileScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -97,6 +98,11 @@ function DrawerScreens() {
         <Drawer.Screen
           name="Profile"
           component={ProfileScreen}
+          options={{ title: "" }}
+        />
+        <Drawer.Screen
+          name="Register"
+          component={RegisterScreen}
           options={{ title: "" }}
         />
       </Drawer.Navigator>

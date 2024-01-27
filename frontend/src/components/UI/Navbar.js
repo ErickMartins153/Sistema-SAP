@@ -59,7 +59,7 @@ export default function Navbar(props) {
                 icon="users"
                 size={50}
                 onPress={handleNavigation}
-                page="Home"
+                page="Register"
               />
             )}
           </Drawer.Section>
