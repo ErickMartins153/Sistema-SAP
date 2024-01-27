@@ -37,6 +37,8 @@ export const GlobalStyles = StyleSheet.create({
     fontSize: 32,
     color: Colors.primary500,
     fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 24,
   },
   headerIcon: {
     marginTop: 48,

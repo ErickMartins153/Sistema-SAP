@@ -21,7 +21,11 @@ export default function Input({
 
   function handleText(text) {
     if (onChangeText) {
-      onChangeText(text, field);
+      if (field) {
+        onChangeText(text, field);
+      } else {
+        onChangeText(text);
+      }
     }
   }
 

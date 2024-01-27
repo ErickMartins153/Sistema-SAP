@@ -32,6 +32,7 @@ export default function PostList() {
         onRefresh={handleRefresh}
         refreshing={isRefreshing}
         contentContainerStyle={{ paddingBottom: 24 }}
+        showsVerticalScrollIndicator={false}
       />
     </>
   );
