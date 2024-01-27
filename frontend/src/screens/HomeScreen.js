@@ -10,6 +10,7 @@ export default function HomeScreen({ navigation }) {
     navigation.setOptions({
       headerTitleStyle: {
         ...GlobalStyles.title,
+        marginBottom: 0,
       },
     });
   }, [navigation]);

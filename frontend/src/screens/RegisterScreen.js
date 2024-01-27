@@ -9,7 +9,7 @@ export default function RegisterScreen() {
       <View style={styles.contentContainer}>
         <Text style={styles.title}>CADASTRAR</Text>
         <RegisterForm />
-        <View>
+        <View style={{ marginBottom: 16 }}>
           <Text style={[styles.title, { marginTop: 16 }]}>REMOVER</Text>
           <UserList />
         </View>
@@ -31,5 +31,6 @@ const styles = StyleSheet.create({
   },
   title: {
     ...GlobalStyles.title,
+    marginBottom: 8,
   },
 });

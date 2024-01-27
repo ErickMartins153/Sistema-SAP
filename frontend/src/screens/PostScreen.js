@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.accentColor,
     padding: 4,
     paddingLeft: 48,
-    paddingRight: 52,
+    paddingRight: "8%",
     borderRadius: 8,
     position: "absolute",
     left: "24%",

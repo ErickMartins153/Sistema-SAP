@@ -16,26 +16,29 @@ export default function UserList() {
       <Icon
         icon="filter"
         style={styles.icon}
-        onPress={() => console.log(users)}
+        onPress={() => alert("Em breve!")}
       />
-      <FlatList
-        data={users}
-        renderItem={handleUser}
-        keyExtractor={(item) =>
-          new Date().toISOString() + Math.random().toString()
-        }
-      />
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={users}
+          renderItem={handleUser}
+          keyExtractor={(item) =>
+            new Date().toISOString() + Math.random().toString()
+          }
+          contentContainerStyle={{ justifyContent: "center" }}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     borderRadius: 20,
     borderWidth: 1,
     backgroundColor: Colors.white,
     paddingBottom: 12,
+    minHeight: "62%",
   },
   icon: {
     marginTop: 24,

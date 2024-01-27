@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
   },
   avatar: {
     backgroundColor: Colors.accentColor,
+    borderRadius: 500,
   },
 });
