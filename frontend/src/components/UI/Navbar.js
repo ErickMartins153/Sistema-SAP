@@ -50,7 +50,7 @@ export default function Navbar(props) {
               icon="calendar"
               size={50}
               onPress={handleNavigation}
-              page="Home"
+              page="Schedule"
             />
             {status === "admin" && (
               <NavbarItem

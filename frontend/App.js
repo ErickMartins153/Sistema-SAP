@@ -19,6 +19,7 @@ import PostScreen from "./src/screens/PostScreen";
 import Icon from "./src/components/UI/Icon";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
+import ScheduleScreen from "./src/screens/ScheduleScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -104,6 +105,11 @@ function DrawerScreens() {
           name="Register"
           component={RegisterScreen}
           options={{ title: "" }}
+        />
+        <Drawer.Screen
+          name="Schedule"
+          component={ScheduleScreen}
+          options={{ title: "Horário" }}
         />
       </Drawer.Navigator>
     </PostContextProvider>
