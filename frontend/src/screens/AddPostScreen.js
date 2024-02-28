@@ -76,7 +76,7 @@ export default function AddPostScreen({ navigation }) {
   }
 
   return (
-    <AvoidingView
+    <KeyboardAvoidingView
       style={styles.screen}
       contentContainerStyle={styles.screen}
     >
