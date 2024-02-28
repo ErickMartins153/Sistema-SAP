@@ -10,12 +10,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../store/auth-context";
 
 export default function Navbar(props) {
-  const { status } = useContext(AuthContext);
+  const { status, token } = useContext(AuthContext);
 
   function handleNavigation(destinyPage) {
     props.navigation.navigate(destinyPage);
   }
 
+  function formatName(name) {
+    return name[0].toUpperCase() + name.slice(1);
+  }
   return (
     <View style={styles.rootContainer}>
       <DrawerContentScrollView {...props}>
@@ -23,7 +26,7 @@ export default function Navbar(props) {
           <View style={styles.avatar}>
             <UserAvatar size={144} />
             <View style={styles.userInfoSection}>
-              <Title style={styles.userInfoText}>Fulano de tal</Title>
+              <Title style={styles.userInfoText}>{formatName(token)}</Title>
               <Caption>Cargo/função</Caption>
             </View>
           </View>

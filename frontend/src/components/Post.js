@@ -22,6 +22,10 @@ export default function Post({ postData }) {
     });
   }
 
+  function formatName(name) {
+    return name[0].toUpperCase() + name.slice(1);
+  }
+
   return (
     <View style={styles.rootContainer}>
       <Pressable
@@ -34,7 +38,7 @@ export default function Post({ postData }) {
       >
         <View style={styles.postHeader}>
           <View style={styles.userContainer}>
-            <Text style={styles.userText}>{postData.user}</Text>
+            <Text style={styles.userText}>{formatName(postData.user)}</Text>
           </View>
           <UserAvatar size={64} />
           <View style={styles.dateContainer}>

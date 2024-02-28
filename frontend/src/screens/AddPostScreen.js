@@ -14,12 +14,14 @@ import SubmitButton from "../components/UI/SubmitButton";
 import { PostContext } from "../store/post-context";
 import Icon from "../components/UI/Icon";
 import FormattedImage from "../components/UI/FormattedImage";
+import { AuthContext } from "../store/auth-context";
 
 export default function AddPostScreen({ navigation }) {
   const [appendedFiles, setAppendedFiles] = useState({});
   const [description, setDescription] = useState(null);
 
   const postCtx = useContext(PostContext);
+  const { token } = useContext(AuthContext);
 
   let imagePath = null;
   const isImage = appendedFiles?.image ? true : false;
@@ -63,12 +65,7 @@ export default function AddPostScreen({ navigation }) {
       ? appendedFiles?.image[0].uri
       : null;
     const descriptionSanitizer = description ?? "Sem descrição";
-    postCtx.addPost(
-      "Fulano de tal",
-      new Date(),
-      imageSanitizer,
-      descriptionSanitizer
-    );
+    postCtx.addPost(token, new Date(), imageSanitizer, descriptionSanitizer);
     handleClearPage();
   }
 
@@ -79,7 +76,7 @@ export default function AddPostScreen({ navigation }) {
   }
 
   return (
-    <KeyboardAvoidingView
+    <AvoidingView
       style={styles.screen}
       contentContainerStyle={styles.screen}
     >

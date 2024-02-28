@@ -8,8 +8,13 @@ import { AuthContext } from "../store/auth-context";
 import Button from "../components/UI/Button";
 
 export default function ProfileScreen({ navigation }) {
+  const { token } = useContext(AuthContext);
   function handleEdit() {
     alert("Em breve!");
+  }
+
+  function formatName(name) {
+    return name[0].toUpperCase() + name.slice(1);
   }
 
   useLayoutEffect(() => {
@@ -29,7 +34,7 @@ export default function ProfileScreen({ navigation }) {
         <View style={styles.userContainer}>
           <UserAvatar size={144} />
           <View>
-            <Text style={styles.userText}>Fulano de Tal</Text>
+            <Text style={styles.userText}>{formatName(token)}</Text>
             <Text style={styles.pronouns}>(Ele/Dele)</Text>
           </View>
           <View style={styles.buttonsContainer}>
