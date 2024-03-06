@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "SAP",
+    "slug": "SAP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -9,29 +9,35 @@
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#D9D9D9"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "br.upe.SAP"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
-    "assets": ["./src/assets/fonts"],
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": ["./src/assets/fonts/PoppinsRegular.ttf"]
-        }
-      ]
-    ]
+    "plugins": [],
+    "extra": {
+      "eas": {
+        "projectId": "590e140f-70c4-426c-80ee-36911006ff84"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/590e140f-70c4-426c-80ee-36911006ff84"
+    }
   }
 }

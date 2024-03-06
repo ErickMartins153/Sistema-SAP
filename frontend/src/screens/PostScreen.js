@@ -18,7 +18,7 @@ export default function PostScreen({ route, navigation }) {
     alert("Em breve!");
   }
 
-  function handleAlert() {
+  function handleDelete() {
     Alert.alert(
       "Você tem certeza?",
       "Uma vez deletado esse post não poderá ser recuperado!",
@@ -31,6 +31,16 @@ export default function PostScreen({ route, navigation }) {
         },
       ]
     );
+  }
+
+  function handleReport() {
+    Alert.alert("Confirmar denúncia?", "", [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Confirmar",
+        style: "destructive",
+      },
+    ]);
   }
 
   function handleDelete(id) {
@@ -47,14 +57,23 @@ export default function PostScreen({ route, navigation }) {
             style={styles.icon}
             onPress={() => navigation.navigate("Home")}
           />
-          {status === "admin" && (
+
+          <View>
             <Icon
-              icon="trash-2"
-              style={styles.icon}
+              icon="alert-triangle"
               iconColor={Colors.error50}
-              onPress={handleAlert}
+              style={styles.icon}
+              onPress={handleReport}
             />
-          )}
+            {status === "admin" && (
+              <Icon
+                icon="trash-2"
+                style={styles.icon}
+                iconColor={Colors.error50}
+                onPress={handleDelete}
+              />
+            )}
+          </View>
         </View>
         <View style={styles.postContent}>
           <View style={styles.userContainer}>

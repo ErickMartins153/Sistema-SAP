@@ -1,5 +1,5 @@
 import { DrawerContentScrollView } from "@react-navigation/drawer";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { Title, Caption, Drawer } from "react-native-paper";
 
 import LogoutIcon from "./LogoutIcon";
@@ -65,9 +65,37 @@ export default function Navbar(props) {
                 page="Register"
               />
             )}
+            {/* <View style={{ alignItems: "flex-end" }}>
+              <NavbarItem
+                label="Ajuda"
+                labelStyle={styles.LabelStyle}
+                icon="help-circle"
+                size={50}
+                onPress={handleNavigation}
+              />
+            </View> */}
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
+      <View
+        style={{
+          position: "absolute",
+          width: 200,
+          bottom: "10%",
+          left: 0,
+          margin: 0,
+          padding: 0,
+          marginLeft: -6,
+        }}
+      >
+        <NavbarItem
+          label="Ajuda"
+          labelStyle={styles.LabelStyle}
+          icon="help-circle"
+          size={50}
+          onPress={() => Alert.alert("Em breve!")}
+        />
+      </View>
       <LogoutIcon />
     </View>
   );
